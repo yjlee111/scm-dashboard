@@ -327,12 +327,12 @@ function renderGrid(){
   const thead=document.createElement('thead');
   const hr=document.createElement('tr');
   const corner=document.createElement('th');
-  corner.style.cssText=`width:${HEAD_W}px;min-width:${HEAD_W}px;position:sticky;left:0;z-index:70;background:var(--color-background-secondary);border-right:0.5px solid var(--color-border-secondary);border-bottom:0.5px solid var(--color-border-secondary);`;
+ corner.style.cssText=`width:${HEAD_W}px;min-width:${HEAD_W}px;position:sticky;left:0;top:0;z-index:70;background:var(--color-background-secondary);border-right:0.5px solid var(--color-border-secondary);border-bottom:0.5px solid var(--color-border-secondary);`;
   hr.appendChild(corner);
   groups.forEach((g,gi)=>{
     const th=document.createElement('th');
     th.colSpan=grpCols[g].length;
-    th.style.cssText=`padding:8px 10px;text-align:center;font-size:11px;font-weight:600;color:#fff;background:${groupColors[g]};border-right:${gi<groups.length-1?'2px solid rgba(255,255,255,0.3)':'none'};border-bottom:0.5px solid rgba(255,255,255,0.2);white-space:nowrap;`;
+    th.style.cssText=`padding:8px 10px;text-align:center;font-size:11px;font-weight:600;color:#fff;background:${groupColors[g]};border-right:${gi<groups.length-1?'2px solid rgba(255,255,255,0.3)':'none'};border-bottom:0.5px solid rgba(255,255,255,0.2);white-space:nowrap;;position:sticky;top:0;z-index:60;`;
     th.textContent=g;
     hr.appendChild(th);
   });
