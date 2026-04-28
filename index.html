@@ -317,24 +317,23 @@ function renderGrid(){
   const searchActive=!!searchQuery;
   const HEAD_W=52,CELL_W=175;
   const grpCols={};groups.forEach(g=>{grpCols[g]=getGroupCols(g);});
-  const filterBarH=document.querySelector('.filter-bar')?.offsetHeight||38;
 
   const scrollDiv=document.createElement('div');
-  scrollDiv.style.cssText='overflow-x:auto;overflow-y:visible;width:100%;';
+  scrollDiv.style.cssText='overflow:auto;width:100%;';
   const inner=document.createElement('div');
-  inner.style.cssText='display:block;min-width:100%;';
+  inner.style.cssText='display:inline-block;min-width:100%;';
   const tbl=document.createElement('table');
   tbl.style.cssText='border-collapse:collapse;';
 
   const thead=document.createElement('thead');
   const hr=document.createElement('tr');
   const corner=document.createElement('th');
-  corner.style.cssText=`width:${HEAD_W}px;min-width:${HEAD_W}px;position:sticky;left:0;top:${filterBarH}px;z-index:70;background:var(--color-background-secondary);border-right:0.5px solid var(--color-border-secondary);border-bottom:0.5px solid var(--color-border-secondary);`;
+  corner.style.cssText=`width:${HEAD_W}px;min-width:${HEAD_W}px;position:sticky;left:0;z-index:70;background:var(--color-background-secondary);border-right:0.5px solid var(--color-border-secondary);border-bottom:0.5px solid var(--color-border-secondary);`;
   hr.appendChild(corner);
   groups.forEach((g,gi)=>{
     const th=document.createElement('th');
     th.colSpan=grpCols[g].length;
-    th.style.cssText=`padding:8px 10px;text-align:center;font-size:11px;font-weight:600;color:#fff;background:${groupColors[g]};border-right:${gi<groups.length-1?'2px solid rgba(255,255,255,0.3)':'none'};border-bottom:0.5px solid rgba(255,255,255,0.2);white-space:nowrap;position:sticky;top:${filterBarH}px;z-index:60;`;
+    th.style.cssText=`padding:8px 10px;text-align:center;font-size:11px;font-weight:600;color:#fff;background:${groupColors[g]};border-right:${gi<groups.length-1?'2px solid rgba(255,255,255,0.3)':'none'};border-bottom:0.5px solid rgba(255,255,255,0.2);white-space:nowrap;`;
     th.textContent=g;
     hr.appendChild(th);
   });
