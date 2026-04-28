@@ -225,7 +225,7 @@ function parseData(raw){
     if(!id.match(/^S\d+/)) continue;
     steps.push({
       id,name:clean(row[iName]),
-      g:clean(row[iGrpName])||clean(row[iGrp])||'미분류',
+      g:clean(row[iGrpName])||clean(row[iGrp])||'(skip)',
       dept:clean(row[iDept]),type:clean(row[iType])||'PROCESS',
       prod:split(row[iProd]),chan:split(row[iChan]),
       definition:clean(row[iDef]),
@@ -234,7 +234,7 @@ function parseData(raw){
     });
   }
   const go=[];steps.forEach(s=>{if(!go.includes(s.g))go.push(s.g);});
-  groups=go;
+  groups=go.filter(g=>g!=='(skip)');
   groups.forEach((g,i)=>{groupColors[g]=GRP_COLORS[i%GRP_COLORS.length];});
   const deptOrder=[];steps.forEach(s=>{if(s.dept&&!deptOrder.includes(s.dept))deptOrder.push(s.dept);});
   depts=deptOrder;
